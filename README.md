@@ -358,30 +358,6 @@ Next Customer
 
 ---
 
-# 🚀 Installation
-
-```bash
-git clone https://github.com/YOUR_USERNAME/ticket-booking-system.git
-
-cd ticket-booking-system
-
-npm install
-
-npm run dev
-```
-
----
-
-# 🌍 Environment Variables
-
-```env
-VITE_SUPABASE_URL=
-
-VITE_SUPABASE_ANON_KEY=
-```
-
----
-
 # 🚀 Deployment
 
 Frontend
