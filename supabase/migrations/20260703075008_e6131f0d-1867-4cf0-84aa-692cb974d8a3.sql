@@ -333,3 +333,38 @@ BEGIN
   GET DIAGNOSTICS cnt = ROW_COUNT;
   RETURN cnt;
 END; $$;
+-- ==============================
+-- Additional indexes for performance
+-- ==============================
+
+CREATE INDEX IF NOT EXISTS events_city_idx
+ON public.events(city);
+
+CREATE INDEX IF NOT EXISTS bookings_created_at_idx
+ON public.bookings(created_at DESC);
+
+CREATE INDEX IF NOT EXISTS notifications_user_idx
+ON public.notifications(user_id);
+
+CREATE INDEX IF NOT EXISTS waitlist_event_idx
+ON public.waitlist(event_id);
+
+-- ==============================
+-- Helpful constraints
+-- ==============================
+
+ALTER TABLE public.events
+ADD CONSTRAINT events_price_positive
+CHECK (base_price >= 0);
+
+ALTER TABLE public.seats
+ADD CONSTRAINT seats_price_positive
+CHECK (price >= 0);
+
+ALTER TABLE public.bookings
+ADD CONSTRAINT bookings_amount_positive
+CHECK (total_amount >= 0);
+
+ALTER TABLE public.payments
+ADD CONSTRAINT payments_amount_positive
+CHECK (amount >= 0);
